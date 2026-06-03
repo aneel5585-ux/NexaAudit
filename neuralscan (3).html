@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEURALSCAN - AI Website QA + SEO Auditor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@450&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#004e60",
+                    "inverse-surface": "#e5e2e1",
+                    "secondary-container": "#7000ff",
+                    "on-tertiary-fixed": "#121f00",
+                    "on-surface-variant": "#bbc9cf",
+                    "tertiary-fixed-dim": "#95da00",
+                    "on-background": "#e5e2e1",
+                    "on-surface": "#e5e2e1",
+                    "primary-fixed-dim": "#4cd6ff",
+                    "on-error-container": "#ffdad6",
+                    "surface-container": "#201f1f",
+                    "on-secondary-fixed": "#23005b",
+                    "outline-variant": "#3c494e",
+                    "surface-tint": "#4cd6ff",
+                    "secondary-fixed-dim": "#d1bcff",
+                    "on-tertiary-container": "#395700",
+                    "on-secondary-container": "#ddcdff",
+                    "on-error": "#690005",
+                    "on-secondary": "#3c0090",
+                    "on-tertiary-fixed-variant": "#334f00",
+                    "on-primary": "#003543",
+                    "primary-fixed": "#b7eaff",
+                    "surface-bright": "#3a3939",
+                    "surface": "#131313",
+                    "surface-container-high": "#2a2a2a",
+                    "tertiary-fixed": "#acf91b",
+                    "on-tertiary": "#223600",
+                    "error-container": "#93000a",
+                    "tertiary-container": "#90d400",
+                    "secondary-fixed": "#e9ddff",
+                    "surface-container-lowest": "#0e0e0e",
+                    "surface-dim": "#131313",
+                    "tertiary": "#a6f20d",
+                    "error": "#ffb4ab",
+                    "primary-container": "#00d1ff",
+                    "surface-container-highest": "#353534",
+                    "surface-container-low": "#1c1b1b",
+                    "surface-variant": "#353534",
+                    "primary": "#a4e6ff",
+                    "background": "#131313",
+                    "on-secondary-fixed-variant": "#5700c9",
+                    "inverse-primary": "#00677f",
+                    "on-primary-container": "#00566a",
+                    "inverse-on-surface": "#313030",
+                    "on-primary-fixed": "#001f28",
+                    "secondary": "#d1bcff",
+                    "outline": "#859399"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "xl": "48px",
+                    "md": "16px",
+                    "container-max": "1280px",
+                    "xs": "4px",
+                    "2xl": "80px",
+                    "sm": "8px",
+                    "gutter": "24px",
+                    "lg": "24px"
+            },
+            "maxWidth": {
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "body-md": ["Geist"],
+                    "headline-md": ["Geist"],
+                    "headline-lg": ["Geist"],
+                    "display": ["Geist"],
+                    "label-md": ["Geist"],
+                    "body-lg": ["Geist"],
+                    "headline-lg-mobile": ["Geist"],
+                    "body-sm": ["Geist"],
+                    "mono": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "display": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "mono": ["14px", {"lineHeight": "20px", "fontWeight": "450"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid #262626;
+        }
+        .glow-cyan {
+            box-shadow: 0px 0px 20px rgba(0, 209, 255, 0.4);
+        }
+        .indicator-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+        .indicator-cyan { background-color: #00D1FF; box-shadow: 0 0 8px #00D1FF; }
+        .hover\:glow-cyan:hover {
+            box-shadow: 0px 0px 20px rgba(0, 209, 255, 0.4);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30 h-20">
+<div class="flex justify-between items-center h-full px-lg max-w-container-max mx-auto">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-headline-md" data-icon="monitoring">monitoring</span>
+<span class="font-display text-headline-md tracking-tighter text-primary dark:text-primary">NEURALSCAN</span>
+</div>
+<button class="bg-primary-container text-on-primary-container px-md py-sm rounded-lg font-label-md hover:glow-cyan transition-all duration-200 active:scale-95">
+                Get Started
+            </button>
+</div>
+</header>
+<main class="relative min-h-screen pt-20 overflow-x-hidden">
+<!-- Hero Section with Shader Background -->
+<section class="relative h-[751px] flex flex-col items-center justify-center px-md text-center">
+<!-- STITCH_SHADER_START:ANIMATION_1 class="absolute inset-0 w-full h-full -z-10" -->
+<div class="absolute inset-0 w-full h-full -z-10" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_1" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_1');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+uniform float u_time;
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+varying vec2 v_texCoord;
+
+void main() {
+    vec2 uv = v_texCoord;
+    float time = u_time * 0.2;
+    
+    // Create a flowing, ethereal "AI energy" field
+    float n = 0.0;
+    vec2 p = uv * 3.0;
+    for(float i = 1.0; i < 4.0; i++) {
+        p.x += 0.5 * sin(i * p.y + time);
+        p.y += 0.5 * cos(i * p.x + time);
+        n += abs(sin(p.x + p.y));
+    }
+    
+    // Map to a deep SaaS palette (Deep Slate to Cyan)
+    vec3 baseColor = vec3(0.039, 0.039, 0.039); // #0A0A0A
+    vec3 accentColor = vec3(0.0, 0.82, 1.0);     // #00D1FF
+    
+    vec3 color = mix(baseColor, accentColor * 0.2, n * 0.3);
+    
+    // Add a subtle glow at the mouse position
+    vec2 mouse = u_mouse / u_resolution;
+    float dist = distance(uv, mouse);
+    color += accentColor * (0.05 / (dist + 0.5));
+
+    gl_FragColor = vec4(color, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
+      console.error('Shader compile error:', gl.getShaderInfoLog(s));
+      gl.deleteShader(s);
+      return null;
+    }
+    return s;
+  }
+  const vShader = cs(gl.VERTEX_SHADER, vs);
+  const fShader = cs(gl.FRAGMENT_SHADER, fs);
+  if (!vShader || !fShader) return;
+  const prog = gl.createProgram();
+  gl.attachShader(prog, vShader);
+  gl.attachShader(prog, fShader);
+  gl.linkProgram(prog);
+  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+    console.error('Shader link error:', gl.getProgramInfoLog(prog));
+    return;
+  }
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_1 -->
+<div class="z-10 max-w-lg space-y-md animate-in fade-in slide-in-from-bottom-8 duration-700">
+<div class="inline-flex items-center gap-xs px-sm py-1 rounded-full border border-outline-variant/30 bg-surface-container-lowest/50 backdrop-blur-md">
+<div class="indicator-dot indicator-cyan"></div>
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest">Autonomous Audit System v2.4</span>
+</div>
+<h1 class="font-display text-headline-lg-mobile text-on-surface leading-tight tracking-tight">
+                    Audit your site with <br/>
+<span class="text-primary-container">AI precision</span>
+</h1>
+<p class="text-body-md text-on-surface-variant max-w-sm mx-auto">
+                    Deploy deep-neural scans to identify UX friction, SEO gaps, and content irregularities in seconds.
+                </p>
+<!-- URL Input Field -->
+<div class="mt-xl space-y-md w-full">
+<div class="relative group">
+<input class="w-full h-[56px] bg-[#0A0A0A] border border-[#262626] rounded-xl px-lg font-mono text-primary-fixed focus:border-primary-container focus:ring-0 transition-all duration-300 placeholder:text-outline/50" placeholder="https://yourwebsite.com" type="url"/>
+<div class="absolute inset-0 rounded-xl pointer-events-none group-focus-within:shadow-[inset_0_0_10px_rgba(0,209,255,0.15)]"></div>
+</div>
+<button class="w-full h-[56px] bg-[#00D1FF] text-[#000000] font-headline-md rounded-xl hover:glow-cyan transition-all duration-300 active:scale-[0.98]">
+                        Analyze Now
+                    </button>
+</div>
+</div>
+<!-- Gradient Fade to Content -->
+<div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent"></div>
+</section>
+<!-- Features Bento Grid-like Cards -->
+<section class="px-md py-2xl space-y-lg relative z-10">
+<div class="flex flex-col gap-sm mb-md">
+<span class="text-label-md font-label-md text-primary tracking-[0.2em] uppercase">Intelligence Modules</span>
+<h2 class="font-headline-lg-mobile text-on-surface">Precision Overlays</h2>
+</div>
+<div class="grid grid-cols-1 gap-lg">
+<!-- SEO Insights -->
+<div class="glass-panel p-lg rounded-xl flex flex-col gap-md group hover:scale-[1.01] transition-transform duration-300">
+<div class="flex justify-between items-start">
+<div class="p-sm bg-primary-container/10 rounded-lg">
+<span class="material-symbols-outlined text-primary-container" data-icon="search_insights">search_insights</span>
+</div>
+<span class="text-label-md font-mono text-outline">MODULE_01</span>
+</div>
+<h3 class="font-headline-md text-on-surface">SEO Insights</h3>
+<p class="text-body-sm text-on-surface-variant">Real-time keyword density mapping and backlink health scoring powered by large language models.</p>
+<div class="mt-sm flex flex-wrap gap-xs">
+<span class="px-sm py-1 bg-surface-container rounded-full text-label-md text-outline">Semantic Map</span>
+<span class="px-sm py-1 bg-surface-container rounded-full text-label-md text-outline">Rank Predictor</span>
+</div>
+</div>
+<!-- UX Optimization -->
+<div class="glass-panel p-lg rounded-xl flex flex-col gap-md group hover:scale-[1.01] transition-transform duration-300">
+<div class="flex justify-between items-start">
+<div class="p-sm bg-secondary-container/10 rounded-lg">
+<span class="material-symbols-outlined text-secondary" data-icon="touch_app">touch_app</span>
+</div>
+<span class="text-label-md font-mono text-outline">MODULE_02</span>
+</div>
+<h3 class="font-headline-md text-on-surface">UX Optimization</h3>
+<p class="text-body-sm text-on-surface-variant">Identify design friction points and conversion blockers with automated heat-map analysis.</p>
+<div class="mt-sm flex flex-wrap gap-xs">
+<span class="px-sm py-1 bg-surface-container rounded-full text-label-md text-outline">Friction Alert</span>
+<span class="px-sm py-1 bg-surface-container rounded-full text-label-md text-outline">A/B Vector</span>
+</div>
+</div>
+<!-- Content Quality -->
+<div class="glass-panel p-lg rounded-xl flex flex-col gap-md group hover:scale-[1.01] transition-transform duration-300">
+<div class="flex justify-between items-start">
+<div class="p-sm bg-tertiary-container/10 rounded-lg">
+<span class="material-symbols-outlined text-tertiary" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<span class="text-label-md font-mono text-outline">MODULE_03</span>
+</div>
+<h3 class="font-headline-md text-on-surface">Content Quality</h3>
+<p class="text-body-sm text-on-surface-variant">Deep scanning for tone consistency, grammatical precision, and technical relevance.</p>
+<div class="mt-sm flex flex-wrap gap-xs">
+<span class="px-sm py-1 bg-surface-container rounded-full text-label-md text-outline">Tone Check</span>
+<span class="px-sm py-1 bg-surface-container rounded-full text-label-md text-outline">Plagiarism Scan</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Dynamic Result Preview (Illustration) -->
+<section class="px-md py-2xl">
+<div class="glass-panel rounded-xl overflow-hidden border-[#262626]">
+<div class="px-lg py-md border-b border-[#262626] flex items-center justify-between bg-surface-container-low">
+<div class="flex gap-xs">
+<div class="w-3 h-3 rounded-full bg-error/40"></div>
+<div class="w-3 h-3 rounded-full bg-tertiary/40"></div>
+<div class="w-3 h-3 rounded-full bg-primary/40"></div>
+</div>
+<span class="text-label-md font-mono text-on-surface-variant">LIVE_REPORT.JSON</span>
+</div>
+<div class="p-lg space-y-md">
+<div class="flex items-center justify-between">
+<span class="text-body-md">Core Vitals Score</span>
+<span class="text-primary-container font-mono">98/100</span>
+</div>
+<div class="w-full bg-[#262626] h-1 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full w-[98%] shadow-[0_0_8px_rgba(0,209,255,0.5)]"></div>
+</div>
+<div class="grid grid-cols-2 gap-md pt-md">
+<div class="p-md rounded-lg bg-surface-container-lowest border border-[#262626]">
+<span class="text-label-md text-outline block mb-1">SEO Health</span>
+<div class="flex items-center gap-xs">
+<div class="indicator-dot bg-tertiary-container shadow-[0_0_8px_#90d400]"></div>
+<span class="font-headline-md text-on-surface">Optimum</span>
+</div>
+</div>
+<div class="p-md rounded-lg bg-surface-container-lowest border border-[#262626]">
+<span class="text-label-md text-outline block mb-1">Security</span>
+<div class="flex items-center gap-xs">
+<div class="indicator-dot bg-primary-container shadow-[0_0_8px_#00D1FF]"></div>
+<span class="font-headline-md text-on-surface">Hardened</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-xl bg-surface dark:bg-surface border-t border-outline-variant/20">
+<div class="flex flex-col md:flex-row justify-between items-center px-lg gap-md max-w-container-max mx-auto">
+<div class="flex flex-col items-center md:items-start gap-xs">
+<span class="font-display text-body-lg text-primary">NEURALSCAN AI</span>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest text-center md:text-left">
+                    © 2026 NEURALSCAN AI. SECURED BY ARCHITECT INTEL.
+                </p>
+</div>
+<nav class="flex flex-wrap justify-center gap-lg">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary-fixed-dim transition-colors" href="#">Documentation</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary-fixed-dim transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary-fixed-dim transition-colors" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary-fixed-dim transition-colors" href="#">API Status</a>
+</nav>
+</div>
+</footer>
+<script>
+        // Micro-interactions for button glows
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => {
+                btn.style.transform = 'scale(0.96)';
+            });
+            btn.addEventListener('mouseup', () => {
+                btn.style.transform = 'scale(1)';
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'scale(1)';
+            });
+        });
+
+        // Simple scroll reveal for cards
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in', 'fade-in', 'slide-in-from-bottom-4', 'duration-500');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.glass-panel').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body></html>
